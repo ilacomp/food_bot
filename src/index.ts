@@ -1,7 +1,7 @@
 import { Telegraf } from 'telegraf';
 import { config } from 'dotenv';
-import axios from 'axios';
 import { menuCommand } from './commands/menu';
+import { myOrderCommand, ordersCommand } from './commands/order';
 
 config();
 
@@ -12,6 +12,8 @@ bot.start(ctx => {
 });
 
 bot.command('menu', menuCommand);
+bot.command('myorder', myOrderCommand);
+bot.command('orders', ordersCommand);
 
 
 bot.launch()
@@ -19,6 +21,8 @@ bot.launch()
         bot.telegram.setMyCommands([
             {command: 'start', description: 'Начать разговор'},
             {command: 'menu', description: 'Меню'},
+            {command: 'myorder', description: 'Мой заказ'},
+            {command: 'orders', description: 'Заказы'},
         ]);
         console.info('Bot was started');
     })

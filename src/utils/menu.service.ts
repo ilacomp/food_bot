@@ -27,7 +27,6 @@ class MenuService {
 
     getMenu(): Promise<MenuItem[]> {
         const date = nextDate();
-        console.log(this.menuDate);
         return this.menuDate === date && !!this.menu ? Promise.resolve(this.menu) : this.loadMenu();
     }
 
