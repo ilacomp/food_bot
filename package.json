@@ -1,0 +1,42 @@
+{
+  "name": "food_bot",
+  "version": "1.0.0",
+  "description": "LL food order",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "date-fns": "^2.23.0",
+    "dotenv": "^10.0.0",
+    "iconv-lite": "^0.6.3",
+    "telegraf": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.1",
+    "concurrently": "^6.2.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "NODE_ENV=production node dist/index.js",
+    "watch-node": "nodemon dist/index.js",
+    "watch": "npm run build-ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"npm run watch-ts\" \"npm run watch-node\"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect dist/index.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilacomp/food_bot.git"
+  },
+  "author": "ILA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilacomp/food_bot/issues"
+  },
+  "homepage": "https://github.com/ilacomp/food_bot#readme"
+}
