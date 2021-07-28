@@ -4,6 +4,7 @@ import { menuCommand } from './commands/menu';
 import { clearOrderCommand, myOrderCommand, ordersCommand, totalsCommand } from './commands/order';
 import { addScene } from './scenes/add.scene';
 import { deleteScene } from './scenes/delete.scene';
+import { currentDutyCommand, dutiesCommand, nextDutyCommand } from './commands/duty';
 
 config();
 
@@ -22,6 +23,9 @@ bot.command('add', (ctx) => ctx.scene.enter('add'));
 bot.command('delete', (ctx) => ctx.scene.enter('delete'));
 bot.command('clearorder', clearOrderCommand);
 bot.command('totals', totalsCommand);
+bot.command('duties', dutiesCommand);
+bot.command('currentduty', currentDutyCommand);
+bot.command('nextduty', nextDutyCommand);
 
 
 bot.launch()
@@ -35,6 +39,9 @@ bot.launch()
             {command: 'delete', description: 'Удалить продукт'},
             {command: 'clearorder', description: 'Очистить мой заказ'},
             {command: 'totals', description: 'Список сумм'},
+            {command: 'duties', description: 'Список дежурных'},
+            {command: 'currentduty', description: 'Кто дежурный?'},
+            {command: 'nextduty', description: 'Назначить следующего дежурного'},
         ]);
         console.info('Bot was started');
     })

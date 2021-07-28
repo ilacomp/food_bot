@@ -2,6 +2,7 @@
 
 # compiled output
 /orders
+/duty
 /dist
 /dist-server
 /tmp
