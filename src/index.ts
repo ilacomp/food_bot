@@ -10,7 +10,7 @@ config();
 
 const stage = new Scenes.Stage<Scenes.SceneContext>([addScene, deleteScene]);
 
-const bot = new Telegraf<Scenes.SceneContext>(process.env.TELEGRAM_TOKEN);
+const bot = new Telegraf<Scenes.SceneContext>(process.env.TELEGRAM_TOKEN!);
 bot.start(ctx => {
     ctx.reply('Привет. Тут можно посмотреть меню, сделать заказ и собрать все заказы в один');
 });

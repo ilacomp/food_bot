@@ -3,11 +3,11 @@ import { orderService } from '../utils/order.service';
 import { myOrderCommand } from '../commands/order';
 
 async function deleteItem(ctx: Context) {
-    const user = ctx.from.username;
+    const user = ctx.from!.username;
     const id = Number((ctx.message as any).text.split('.')[0]);
     try {
-        await orderService.deleteFromOrder(user, id - 1);
-        const keyboard = await myOrderKeyboard(user);
+        await orderService.deleteFromOrder(user!, id - 1);
+        const keyboard = await myOrderKeyboard(user!);
         await ctx.reply('Удалено. Можешь удалить еще или вернуться /back', keyboard);
     } catch {
         await ctx.reply('Не понял');
@@ -26,8 +26,8 @@ const { leave } = Scenes.Stage;
 export const deleteScene = new Scenes.BaseScene<Scenes.SceneContext>('delete');
 
 deleteScene.enter(async (ctx) => {
-    const user = ctx.from.username;
-    const keyboard = await myOrderKeyboard(user);
+    const user = ctx.from!.username;
+    const keyboard = await myOrderKeyboard(user!);
 
     await ctx.reply('Выберите продукт для удаления из вашего заказа', keyboard);
 });

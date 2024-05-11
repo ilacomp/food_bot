@@ -3,8 +3,8 @@ import axios from 'axios';
 import iconv from 'iconv-lite';
 
 class MenuService {
-    menuDate: string;
-    menu: MenuItem[];
+    menuDate: string = '';
+    menu: MenuItem[] = [];
 
     async loadMenu(): Promise<MenuItem[]> {
         this.menuDate = '';

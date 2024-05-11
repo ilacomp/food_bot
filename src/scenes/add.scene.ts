@@ -4,10 +4,10 @@ import { menuService } from '../utils/menu.service';
 import { myOrderCommand } from '../commands/order';
 
 async function addItem(ctx: Context) {
-    const user = ctx.from.username;
+    const user = ctx.from!.username;
     const id = Number((ctx.message as any).text.split('.')[0]);
     try {
-        await orderService.addToOrder(user, id - 1);
+        await orderService.addToOrder(user!, id - 1);
         await ctx.reply('Добавлено. Можешь добавить еще или вернуться /back');
     } catch {
         await ctx.reply('Не понял');

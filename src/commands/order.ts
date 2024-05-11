@@ -2,8 +2,8 @@ import { Context } from 'telegraf';
 import { orderService } from '../utils/order.service';
 
 export async function myOrderCommand(ctx: Context) {
-    const user = ctx.from.username;
-    const myOrder = orderService.myOrder(user);
+    const user = ctx.from!.username;
+    const myOrder = orderService.myOrder(user!);
     const list = myOrder.map((item, i) => `${i + 1}. _${item.name}_ ${item.amount}x*${item.price}* руб`).join('\n');
     const total = myOrder.reduce((sum, item) => sum + item.amount * item.price, 0);
     await ctx.replyWithMarkdown(`*Твой заказ*\n${list}\n======\nИТОГО: *${total} руб*`);
@@ -17,8 +17,8 @@ export async function ordersCommand(ctx: Context) {
 }
 
 export async function clearOrderCommand(ctx: Context) {
-    const user = ctx.from.username;
-    orderService.clearMyOrder(user);
+    const user = ctx.from!.username;
+    orderService.clearMyOrder(user!);
     await myOrderCommand(ctx);
 }
 
